@@ -9,6 +9,7 @@ const ejs = require('ejs');
 app.set('view engine', 'ejs');
 
 const validateMiddleWare = require('./validationMiddleware/validateMiddleware');
+const expressSession = require('express-session');
 
 const fileUpload = require('express-fileupload');
 
@@ -17,6 +18,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload());
 app.use('/posts/store', validateMiddleWare);
+app.use(
+  expressSession({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 app.listen(1940, () => {
   console.log('diesel on port 1940');
