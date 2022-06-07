@@ -7,16 +7,13 @@
     <%- include('layouts/navbar.ejs') -%>
 
     <!-- Page Header-->
-    <header
-      class="masthead"
-      style="background-image: url('assets/img/home-bg.jpg')"
-    >
+    <header class="masthead" style="background-image: url('/img/post.jpg')">
       <div class="container position-relative px-4 px-lg-5">
         <div class="row gx-4 gx-lg-5 justify-content-center">
           <div class="col-md-10 col-lg-8 col-xl-7">
             <div class="site-heading">
-              <h1>My Journey</h1>
-              <span class="subheading">Learning Full-Stack Javascript</span>
+              <h1>My Passion</h1>
+              <span class="subheading">Full-Stack Javascript</span>
             </div>
           </div>
         </div>
@@ -28,14 +25,14 @@
         <div class="col-md-10 col-lg-8 col-xl-7">
           <% for (var i = 0; i < blogposts.length; i++) { %>
           <div class="post-preview">
-            <a href="post/<%= blogposts[i]._id %>">
+            <a href="/post/<%= blogposts[i]._id %>">
               <h2 class="post-title"><%= blogposts[i].title %></h2>
               <h3 class="post-subtitle"><%= blogposts[i].body %></h3>
             </a>
             <p class="post-meta">
               Posted by
-              <a href="#!">Start Bootstrap</a>
-              on September 24, 2022
+              <a href="#!">Steve Antonio Silva</a>
+              on <%= blogposts[i].datePosted.toDateString() %>
             </p>
           </div>
           <% } %>
