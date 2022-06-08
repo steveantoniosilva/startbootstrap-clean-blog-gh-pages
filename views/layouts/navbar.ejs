@@ -18,11 +18,13 @@
         <li class="nav-item">
           <a class="nav-link px-lg-3 py-3 py-lg-4" href="/">Home</a>
         </li>
+        <% if(loggedIn) { %>
         <li class="nav-item">
           <a class="nav-link px-lg-3 py-3 py-lg-4" href="/posts/new"
             >New Post</a
           >
         </li>
+        <% } %> <% if(!loggedIn) { %>
         <li class="nav-item">
           <a class="nav-link px-lg-3 py-3 py-lg-4" href="/auth/login">Login</a>
         </li>
@@ -31,6 +33,7 @@
             >New User</a
           >
         </li>
+        <% } %>
       </ul>
     </div>
   </div>

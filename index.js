@@ -6,12 +6,15 @@ mongoose.connect('mongodb://localhost/my_database');
 const app = express();
 const ejs = require('ejs');
 
-app.set('view engine', 'ejs');
-
+const fileUpload = require('express-fileupload');
 const validateMiddleWare = require('./validationMiddleware/validateMiddleware');
 const expressSession = require('express-session');
+const authMiddleware = require('./validationMiddleware/authMiddleware');
+const redirectMiddleware = require('./validationMiddleware/redirectIfAuthenticatedMW');
 
-const fileUpload = require('express-fileupload');
+app.set('view engine', 'ejs');
+
+global.loggedIn = null;
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -25,6 +28,11 @@ app.use(
     saveUninitialized: true,
   })
 );
+
+app.use('*', (req, res, next) => {
+  loggedIn = req.session.userId;
+  next();
+});
 
 app.listen(1940, () => {
   console.log('diesel on port 1940');
@@ -41,9 +49,9 @@ const loginUserController = require('./controllers/loginUser');
 
 app.get('/', homeController);
 app.get('/post/:id', getPostController);
-app.get('/posts/new', newPostController);
-app.post('/posts/store', storePostController);
-app.get('/auth/register', newUserController);
-app.post('/users/register', storeUserController);
-app.get('/auth/login', loginController);
-app.post('/users/login', loginUserController);
+app.get('/posts/new', authMiddleware, newPostController);
+app.post('/posts/store', authMiddleware, storePostController);
+app.get('/auth/register', redirectMiddleware, newUserController);
+app.post('/users/register', redirectMiddleware, storeUserController);
+app.get('/auth/login', redirectMiddleware, loginController);
+app.post('/users/login', redirectMiddleware, loginUserController);
