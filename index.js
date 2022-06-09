@@ -46,6 +46,7 @@ const newUserController = require('./controllers/newUser');
 const storeUserController = require('./controllers/storeUser');
 const loginController = require('./controllers/login');
 const loginUserController = require('./controllers/loginUser');
+const logoutController = require('./controllers/logout');
 
 app.get('/', homeController);
 app.get('/post/:id', getPostController);
@@ -55,3 +56,8 @@ app.get('/auth/register', redirectMiddleware, newUserController);
 app.post('/users/register', redirectMiddleware, storeUserController);
 app.get('/auth/login', redirectMiddleware, loginController);
 app.post('/users/login', redirectMiddleware, loginUserController);
+app.get('/auth/logout', logoutController);
+
+app.use((req, res) => {
+  res.render('notfound');
+});
