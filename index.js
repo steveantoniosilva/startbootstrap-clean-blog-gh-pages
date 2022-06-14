@@ -11,6 +11,7 @@ const validateMiddleWare = require('./validationMiddleware/validateMiddleware');
 const expressSession = require('express-session');
 const authMiddleware = require('./validationMiddleware/authMiddleware');
 const redirectMiddleware = require('./validationMiddleware/redirectIfAuthenticatedMW');
+const flash = require('connect-flash');
 
 app.set('view engine', 'ejs');
 
@@ -29,6 +30,7 @@ app.use(
   })
 );
 
+app.use(flash());
 app.use('*', (req, res, next) => {
   loggedIn = req.session.userId;
   next();

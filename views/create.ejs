@@ -44,6 +44,7 @@
                   <label>Title</label>
                 </div>
                 <div class="form-floating">
+                  <label for="description">Description</label>
                   <textarea
                     class="form-control"
                     id="body"
@@ -51,7 +52,13 @@
                     placeholder="Enter your description here..."
                     style="height: 12rem"
                   ></textarea>
-                  <label for="description">Description</label>
+                  <script>
+                    $('#body').summernote({
+                      placeholder: 'add your blogpost here...',
+                      tabsize: 2,
+                      height: 200,
+                    });
+                  </script>
                 </div>
                 <div class="form-floating">
                   <input
