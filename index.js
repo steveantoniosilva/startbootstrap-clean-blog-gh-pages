@@ -1,7 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/my_database');
+mongoose.connect(
+  'mongodb+srv://stevesilva:MongoDBMongoose@cluster0.lhdg4.mongodb.net/BlogPostDatabase'
+);
 
 const app = express();
 const ejs = require('ejs');
@@ -36,8 +38,11 @@ app.use('*', (req, res, next) => {
   next();
 });
 
-app.listen(1940, () => {
-  console.log('diesel on port 1940');
+let port = process.env.PORT;
+if (port == null || port == '') port = 1940;
+
+app.listen(port, () => {
+  console.log('App listening...');
 });
 
 const homeController = require('./controllers/home');
