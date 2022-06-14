@@ -38,10 +38,7 @@ app.use('*', (req, res, next) => {
   next();
 });
 
-let port = process.env.PORT;
-if (port == null || port == '') port = 1940;
-
-app.listen(port, () => {
+app.listen(process.env.PORT || 1940, () => {
   console.log('App listening...');
 });
 
