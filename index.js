@@ -1,9 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-// const dotenv = require('dotenv');
-// dotenv.config();
-
 mongoose.connect(
   'mongodb+srv://stevesilva:MongoDBMongoose@cluster0.lhdg4.mongodb.net/BlogPostDatabse',
   () => {
