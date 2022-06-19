@@ -1,18 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose');
 
-const dotenv = require('dotenv');
-dotenv.config();
-
-// mongoose.connect(
-//   `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.lhdg4.mongodb.net/BlogPostDatabase`,
-//   () => {
-//     console.log('MongoDB has taken flight...');
-//   }
-// );
+require('dotenv').config();
 
 mongoose.connect(
-  MONGO_URI,
+  process.env.MONGO_URI,
   () => {
     console.log('MongoDB has taken flight...');
   }
