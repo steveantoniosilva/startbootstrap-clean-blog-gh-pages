@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 // );
 
 mongoose.connect(
-  `mongodb+srv://stevesilva:MongoDBMongoose@cluster0.lhdg4.mongodb.net/BlogPostDatabase`,
+  'MONGO_URI',
   () => {
     console.log('MongoDB has taken flight...');
   }
