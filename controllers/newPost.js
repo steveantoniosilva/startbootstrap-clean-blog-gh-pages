@@ -3,6 +3,7 @@ module.exports = (req, res) => {
     res.render('create', {
       createPost: true,
     });
+  } else {
+    res.redirect('/auth/login');
   }
-  res.redirect('/auth/login');
 };
