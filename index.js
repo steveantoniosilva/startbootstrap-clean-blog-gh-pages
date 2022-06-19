@@ -12,7 +12,7 @@ const mongoose = require('mongoose');
 // );
 
 mongoose.connect(
-  'MONGO_URI',
+  MONGO_URI,
   () => {
     console.log('MongoDB has taken flight...');
   }
