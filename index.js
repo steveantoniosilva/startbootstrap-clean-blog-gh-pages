@@ -1,12 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
-mongoose.connect(
-  process.env.MONGOdb,
-  () => {
-    console.log('MongoDB has taken flight...');
-  }
-);
+dotenv.config();
+
+mongoose.connect(process.env.MONGOdb, () => {
+  console.log('MongoDB has taken flight...');
+});
 
 const app = express();
 const ejs = require('ejs');
