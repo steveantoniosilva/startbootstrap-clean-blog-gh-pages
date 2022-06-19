@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 
 mongoose.connect(
-  'mongodb+srv://stevesilva:MongoDBMongoose@cluster0.lhdg4.mongodb.net/BlogPostDatabse',
+  process.env.MONGOdb,
   () => {
     console.log('MongoDB has taken flight...');
   }
