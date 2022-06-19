@@ -4,7 +4,7 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
-mongoose.connect(`mongodb+srv://${MONGOuser}:${MONGOpassword}@cluster0.lhdg4.mongodb.net/BlogPostDatabse`, () => {
+mongoose.connect(`mongodb+srv://${process.env.MONGOuser}:${process.env.MONGOpassword}@cluster0.lhdg4.mongodb.net/BlogPostDatabse`, () => {
   console.log('MongoDB has taken flight...');
 });
 
