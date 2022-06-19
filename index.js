@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 mongoose.connect(process.env.MONGO_URI, () => {
-  console.log('MongoDB has taken flight...');
+  console.log('MongoDB in flight...');
 });
 
 const app = express();
