@@ -16,6 +16,7 @@ const ejs = require('ejs');
 const fileUpload = require('express-fileupload');
 const validateMiddleWare = require('./validationMiddleware/validateMiddleware');
 const expressSession = require('express-session');
+const MemoryStore = require('memorystore')(expressSession);
 const authMiddleware = require('./validationMiddleware/authMiddleware');
 const redirectMiddleware = require('./validationMiddleware/redirectIfAuthenticatedMW');
 const flash = require('connect-flash');
@@ -31,6 +32,10 @@ app.use(fileUpload());
 app.use('/posts/store', validateMiddleWare);
 app.use(
   expressSession({
+    cookie: { maxAge: 86400000 },
+    store: new MemoryStore({
+      checkPeriod: 86400000,
+    }),
     secret: 'secret',
     resave: false,
     saveUninitialized: true,
