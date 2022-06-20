@@ -27,6 +27,11 @@
     <div class="container px-4 px-lg-5">
       <div class="row gx-4 gx-lg-5 justify-content-center">
         <div class="col-md-10 col-lg-8 col-xl-7">
+          <p>
+            Welcome to my full-stack blog project, I created a blog post about
+            the tech I used to build it. Click on one of the posts below to
+            learn more...
+          </p>
           <% for (var i = 0; i < blogposts.length; i++) { %>
           <div class="post-preview">
             <a href="/post/<%= blogposts[i]._id %>">
