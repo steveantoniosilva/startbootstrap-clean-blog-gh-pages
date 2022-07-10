@@ -192,6 +192,10 @@ ul ol {
   margin-bottom: 0;
 }
 
+li {
+  margin: 11px;
+}
+
 dt {
   font-weight: 700;
 }
